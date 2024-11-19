@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	ANT
+
+	Copyright 2018-2024 MicroEJ Corp. All rights reserved.
+	Use of this source code is governed by a BSD-style license that can be found with this software.
+-->
+<project name="configuration">
+
+	<!--
+		Script called by MicroEJ Workbench when building the platform.
+	-->
+	<!--property name="noMergeLibraries" value="true"/-->
+
+	<!-- Import Platform Configuration Additions build file -->
+	<dirname file="${ant.file.configuration}" property="configuration.dir"/>
+	<import file="${configuration.dir}/build/platform/platform.ant"/>
+
+	<!-- Import BSP Configuration script -->
+	<import file="${project.parent.dir}/Linux-abstractionlayer/configuration.xml"/>
+
+</project>

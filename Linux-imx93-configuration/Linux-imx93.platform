@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<platform hardwarePartNumber="IMX93" name="VEEPort" version="1.1.0" provider="MicroEJ" vendorUrl="http://developer.microej.com/4.0/sdk/license" workbenchMinVersion="1.7.0">
+    <environment architecture="ARMv8A" baseline="14" hardwarePartNumber="ARMv8A" toolchain="GNUv113_ARMv8A_32bits_HF_Linux" name="oliveARMv8A_1" techVersion="1.6" version="8.1.1" level="eval" provider="MicroEJ" licenseTag="IS2T_J8F5C"/>
+    <group name="frontPanel"/>
+    <group name="fs"/>
+    <group name="extensible">
+        <without name="sp"/>
+    </group>
+    <group name="net"/>
+    <group name="ssl"/>
+    <group name="ui">
+        <without name="display_decoder_bmpm"/>
+    </group>
+</platform>
