@@ -1,4 +1,4 @@
 [submodule "Linux-abstractionlayer"]
 	path = Linux-abstractionlayer
-	url = git@gitlab.cross:M0124_BSP-Framework/M0124_CCO-VEE-Linux.git
-	branch = develop
+	url = https://github.com/MicroEJ/AbstractionLayer-Linux.git
+	branch = master
