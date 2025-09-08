@@ -2,8 +2,8 @@
 # Use of this source code is governed by a BSD-style license that can be found with this software.
 
 [versions]
-microej-sdk = "1.0.0"
-pack-ui = "14.3.2"
+microej-sdk = "1.3.1"
+pack-ui = "14.4.2"
 
 [libraries]
 # APIs
@@ -11,6 +11,7 @@ api-bon =               { group = "ej.api", name = "bon", version = "1.4.3" }
 api-device =            { group = "ej.api", name = "device", version = "1.2.0" }
 api-drawing =           { group = "ej.api", name = "drawing", version = "1.0.5" }
 api-edc =               { group = "ej.api", name = "edc", version = "1.3.7" }
+api-event =             { group = "ej.api", name = "event", version = "2.1.0" }
 api-fs =                { group = "ej.api", name = "fs", version = "2.1.1" }
 api-microui =           { group = "ej.api", name = "microui", version = "3.6.0" }
 api-net =               { group = "ej.api", name = "net", version = "1.1.4" }
@@ -18,12 +19,12 @@ api-security =          { group = "ej.api", name = "security", version = "1.7.0"
 api-ssl =               { group = "ej.api", name = "ssl", version = "2.2.3" }
 
 # Architecture
-architecture = { group = "com.microej.architecture.ARMv8A.GNUv113_ARMv8A_32bits_HF_Linux", name = "oliveARMv8A_1", version = "8.3.0" }
+architecture = { group = "com.microej.architecture.ARMv8A.GNUv113_ARMv8A_32bits_HF_Linux", name = "oliveARMv8A_1", version = "8.4.0" }
 
 # Packs
 pack-ui-architecture =  { group = "com.microej.architecture.ARMv8A.GNUv113_ARMv8A_32bits_HF_Linux", name = "oliveARMv8A_1-ui-pack", version.ref = "pack-ui" }
 
-# Packs are fetched from Linux-AbstractionLayer (see vee-port/build.gradle.kts)
+# Packs are fetched from linux-abstraction-layer (see vee-port/build.gradle.kts)
 #pack-device =           { group = "com.microej.pack.device", name = "device-pack", version = "1.2.0" }
 #pack-ecom-network =     { group = "com.microej.pack.ecom-network", name = "ecom-network-pack", version = "1.0.0" }
 #pack-fs =               { group = "com.microej.pack", name = "fs", version = "6.0.4" }
@@ -32,13 +33,14 @@ pack-ui =               { group = "com.microej.pack.ui", name = "ui-pack", versi
 
 # Libraries
 frontpanel-framework =  { group = "ej.tool.frontpanel", name = "framework", version = "1.1.0" }
-frontpanel-ui-widget =  { group = "ej.tool.frontpanel", name = "widget", version = "5.1.0" }
+frontpanel-ui-widget =  { group = "ej.tool.frontpanel", name = "widget", version = "5.3.1" }
 
 # Test Libraries
 junit =             { group = "ej.library.test", name = "junit", version = "1.10.3" }
 junit-platform =    { group = "org.junit.platform", name = "junit-platform-launcher", version = "1.8.2" }
 
 # Testsuites
+testsuite-event =               { group = "com.microej.pack.event", name = "event-testsuite", version = "2.1.0" }
 testsuite-fs =                  { group = "com.microej.pack.fs", name = "fs-testsuite", version = "3.0.8" }
 testsuite-fs-openjdk =          { group = "com.microej.pack.fs", name = "fs-testsuite-openjdk", version = "1.0.1" }
 testsuite-net =                 { group = "com.microej.pack.net", name = "net-1_1-testsuite", version = "4.1.2" }

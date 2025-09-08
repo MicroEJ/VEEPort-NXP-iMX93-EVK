@@ -29,9 +29,10 @@ dependencies {
 
     microejPack(libs.pack.ui.architecture)
 
-    // Packs are fetched from Linux-AbstractionLayer/gradle/libs.versions.toml
+    // Packs are fetched from linux-abstraction-layer/gradle/libs.versions.toml
     microejPack(libsOverride.pack.device)
     microejPack(libsOverride.pack.ecom.network)
+    microejPack(libsOverride.pack.event)
     microejPack(libsOverride.pack.fs)
     microejPack(libsOverride.pack.net)
 
@@ -42,7 +43,7 @@ dependencies {
 
 tasks.register<Copy>("copyBspScripts") {
     from("bsp")
-    into("../Linux-abstractionlayer/vee/scripts")
+    into("../linux-abstraction-layer/vee/scripts")
 }
 
 tasks.getByName("buildVeePort").dependsOn("copyBspScripts")

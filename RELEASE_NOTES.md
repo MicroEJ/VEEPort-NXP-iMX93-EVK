@@ -8,7 +8,7 @@ This is the release notes of the VEE Port for i.MX93EVK.
 
 ### VEE Port
 
-3.0.0
+3.1.0
 
 ### Dependencies
 
@@ -16,14 +16,15 @@ This VEE Port contains the following dependencies:
 
 | Dependency Name              | Version |
 |------------------------------|---------|
-| Architecture (oliveARMv8A_1) | 8.3.0   |
+| Architecture (oliveARMv8A_1) | 8.4.0   |
 | Pack UI                      | 14.3.2  |
 | Pack FS                      | 6.0.4   |
 | Pack NET                     | 11.1.0  |
 | Pack ECOM-NETWORK            | 1.0.0   |
 | Pack DEVICE                  | 1.2.0   |
+| Pack EVENT                   | 2.1.0   |
    
-Please refer to the Abstraction Layer [README Abstraction Layer Linux](https://gitlab.cross/M0124_BSP-Framework/M0124_CCO-VEE-Linux/-/blob/develop/README.md) for more details.
+Please refer to the Abstraction Layer [README Abstraction Layer Linux](https://github.com/MicroEJ/AbstractionLayer-Linux/blob/master/README.md) for more details.
 
 ### Board Support Package
 
@@ -72,7 +73,7 @@ This VEE Port features a file system interface.
 This VEE Port has a list of components that are MISRA-compliant (MISRA C:2012) with some noted exception.
 Below is the list of folders that have been verified:
 
-- `Linux-abstractionlayer\projects\microej\core`
+- `linux-abstraction-layer\projects\microej\core`
 
 It has been verified with Cppcheck v2.13. Here is the list of deviations from MISRA standard:
 

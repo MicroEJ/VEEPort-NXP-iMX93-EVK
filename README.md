@@ -1,14 +1,17 @@
 ![SDK](https://shields.microej.com/endpoint?url=https://repository.microej.com/packages/badges/sdk_6.0.json)
-![SDK](https://shields.microej.com/endpoint?url=https://repository.microej.com/packages/badges/arch_8.3.json)
+![SDK](https://shields.microej.com/endpoint?url=https://repository.microej.com/packages/badges/arch_8.4.json)
 ![SDK](https://shields.microej.com/endpoint?url=https://repository.microej.com/packages/badges/gui_3.json)
 
-# VEE Port for NXP i.MX93EVK
+# VEE Port for NXP i.MX93
 
-This project is used to build a VEE Port for the i.MX93EVK development board.
+This project is used to build a VEE Port for the i.MX 93 Evaluation Kit and FRDM i.MX 93 Development Board.
 
 It relies on the generic Abstraction Layer for Linux available [here](https://github.com/MicroEJ/AbstractionLayer-Linux/blob/master/README.md)
 
-![](./images/imx93evk-top.jpg)
+<p float="left">
+  <img src="images/imx93evk-top.jpg" height="334" />
+  <img src="images/frdm-imx93-top.jpg" height="334" /> 
+</p>
 
 Ensure you have cloned the repository and all its submodules.
 
@@ -18,7 +21,7 @@ To update git submodules, run the following command ``git submodule update --ini
 
 This directory also contains:
 
-* [CHANGELOG](./CHANGELOG.md) to track the changes in the VEE Port for i.MX93EVK 
+* [CHANGELOG](./CHANGELOG.md) to track the changes in the VEE Port 
 * [RELEASE NOTES](./RELEASE_NOTES.md) to list:
 
   - the supported hardware,
@@ -26,32 +29,41 @@ This directory also contains:
   - the development environment,
   - the list of the dependencies and their versions.
 
-* [README Abstraction Layer Linux](https://gitlab.cross/M0124_BSP-Framework/M0124_CCO-VEE-Linux/-/blob/develop/README.md) recommended for users familiar with the BSP
+* [README Abstraction Layer Linux](https://github.com/MicroEJ/AbstractionLayer-Linux/blob/master/README.md) recommended for users familiar with the BSP
   and advanced usage on how to customize the build process.
 
 ## Board Technical Specifications
 
-|                         |                       |
-|-------------------------|-----------------------|
-| Name                    | i.MX93EVK             |
-| Revision                | A                     |
-| MPU part number         | i.MX93                |
-| MPU architecture        | Dual Cortex-A55       |
-| MPU max clock frequency | 1.7GHz                |
-| MPU max clock frequency | 16 GB eMMC5.1         |
-| RAM size                | 2 GB LPDDR4X / LPDDR4 |
+|                         | i.MX93 EVK            | FRDM i.MX93           |
+|-------------------------|-----------------------|-----------------------|
+| Revision                | A                     | A                     |
+| MPU part number         | i.MX93                | i.MX93                |
+| MPU architecture        | Dual Cortex-A55       | Dual Cortex-A55       |
+| MPU max clock frequency | 1.7GHz                | 1.7GHz                |
+| Flash (or SDcard slot)  | 16 GB eMMC5.1         | 32 GB eMMC5.1         |
+| RAM size                | 2 GB LPDDR4X / LPDDR4 | 2 GB LPDDR4X / LPDDR4 |
 
-Here is a list of i.MX93EVK useful documentation links:
+Here is a list of i.MX93 EVK useful documentation links:
 
-- Board documentation available [here](https://www.nxp.com/webapp/Download?colCode=MCIMX93EVKUM)
-- |MANUFACTURER| board Getting Started available [here](https://www.nxp.com/document/guide/getting-started-with-the-i-mx93-evk:GS-IMX93EVK)
+- Board documentation available [here](https://www.nxp.com/design/design-center/development-boards-and-designs/i.MX93EVK)
+- Getting Started available [here](https://www.nxp.com/document/guide/getting-started-with-the-i-mx93-evk:GS-IMX93EVK)
+- Board User Manual available [here](https://www.nxp.com/webapp/Download?colCode=MCIMX93EVKUM)
+
+Here is a list of FRDM i.MX93 useful documentation links:
+
+- Board documentation available [here](https://www.nxp.com/design/design-center/development-boards-and-designs/frdm-i-mx-93-development-board:FRDM-IMX93)
+- Getting Started available [here](https://www.nxp.com/document/guide/getting-started-with-frdm-imx93:GS-FRDM-IMX93)
+- Board User Manual available [here](https://www.nxp.com/webapp/Download?colCode=UM12181)
+
+Common Documentation:
+
 - MPU Technical Reference Manual available [here](https://www.nxp.com/webapp/Download?colCode=IMX93RM)
 - MPU Errata available [here](https://www.nxp.com/docs/en/errata/i.MX93_1P87f.pdf)
 - i.MX Linux Yocto Project available [here](https://github.com/nxp-imx/meta-imx)
 
 ## VEE Port Specifications
 
-The Architecture version is `8.3.0`.
+The Architecture version is `8.4.0`.
 
 This VEE Port provides the following Foundation Libraries:
 
@@ -61,6 +73,7 @@ This VEE Port provides the following Foundation Libraries:
 | DEVICE             | 1.2     |
 | DRAWING            | 1.0     |
 | ECOM-NETWORK       | 2.1     |
+| EVENT              | 2.1     |
 | FS                 | 2.1     |
 | KF                 | 1.7     |
 | MICROUI            | 3.5     |
@@ -69,13 +82,13 @@ This VEE Port provides the following Foundation Libraries:
 | SECURITY           | 1.7     |
 | SNI                | 1.4     |
 | SSL                | 2.2     |
-| TRACE              | 1.1     |    
-| WATCHDOG           | 1.0     |    
+| TRACE              | 1.1     |
+| WATCHDOG           | 1.0     |
 
 The VEE Port is derived into:
 
-- a Mono-Sandbox VEE Port
-- a Multi-Sandbox VEE Port (default)
+- a Mono-Sandbox VEE Port (default)
+- a Multi-Sandbox VEE Port
 
 ## Requirements
 
@@ -83,7 +96,7 @@ The VEE Port is derived into:
   - Windows 10 and WSL2 (tested with Ubuntu 22.04)
   - Linux (tested with Ubuntu 22.04)
 - Internet connection to [MicroEJ Central Repository](https://developer.microej.com/central-repository/)
-- i.MX93EVK board
+- i.MX93 board (EVK or FRDM board)
 
 ## VEE Port i.MX93 Setup
 
@@ -96,22 +109,16 @@ The project contains the following subprojects:
   Some modules are described in a specific sub-folder / with some optional configuration files
   (`.properties` and / or `.xml`).
 
-- `bsp`: Contains a ready-to-use BSP software project for the i.MX93 board, including a CMake project,
-  an implementation of MicroEJ Core Engine (and extensions) port on Linux and the i.MX93 board support package.
+- `linux-abstraction-layer`: Contains a ready-to-use Abstraction Layer project, including a CMake project and
+  an implementation of MicroEJ Core Engine (and extensions) port on Linux.
 
 - `vee-port/extensions/front-panel`: Contains the board description and images for the Simulator.
   This project is updated once the VEE Port i.MX93 is built.
 
-- `vee-port/extensions/image-generator`: Contains the Image Generator extension.
-  This project is updated once the VEE Port i.MX93 is built.
-
-- `vee-port/mock`: Contains a Mock.
-  This project is updated once the VEE Port i.MX93 is built.
-
 - `app`: Contains a sample application which uses the VEE Port i.MX93.
 
-By default, the VEE Port i.MX93 is configured as a Mono-Sandbox Evaluation
-VEE Port i.MX93 (Refer to the [RELEASE NOTES](./RELEASE_NOTES.md) limitations section for more details).
+By default, the VEE Port i.MX93 is configured as a Mono-Sandbox Evaluation VEE Port.
+Refer to the [RELEASE NOTES](./RELEASE_NOTES.md) limitations section for more details.
 
 ## Run an Application on the Simulator
 
@@ -123,29 +130,152 @@ To run an Application on the Simulator, the BSP or C/C++ Toolchain are not requi
 The build may take several minutes.
 The first time, the VEE Port i.MX93 build requires to download modules that are available on the MicroEJ Central Repository.
 
+Wait for the Application to start. It is a simple Hello World drawn on the screen.
+
+An evaluation license is needed for building an Application. Refer to
+https://docs.microej.com/en/latest/SDK6UserGuide/licenses.html#evaluation-licenses
+for information on how to acquire and activate a license.
+
+## Board Setup
+
+Please refer to NXP documentation for [iMX93 EVK](https://www.nxp.com/webapp/Download?colCode=MCIMX93EVKUM) or [FRDM i.MX93](https://www.nxp.com/webapp/Download?colCode=UM12181) for more details.
+
+### Power Supply
+
+The board is powered via a USB-C connector.
+
+### Logs Output
+
+A serial port is available (DBG or DEBUG USB port), it provides access to the shell.
+
+To connect to this port use the following settings:
+
+|              |          |
+|--------------|----------|
+| Baudrate     | 115200   |
+| Data bits    | 8        |
+| Parity bits  | None     |
+| Stop bits    | 1        |
+| Flow control | XON/XOFF |
+
+## Run an Application on the Device
+
+To build and run the Application on the Device, the Yocto Image and SDK are required.
+
+Note: if you wish to build your own Image and SDK, see [Advanced Tips](#advanced-tips)
+
+### Host Configuration
+
+The compilation requires Linux, or WSL for Windows.
+
+MicroEJ applications are deployed on the target via SSH.
+
+To setup WSL, and the SSH connection, follow the [Host Configuration README](https://github.com/MicroEJ/AbstractionLayer-Linux/blob/master/README.md#host-configuration).
+
+### Toolchain Setup
+
+We provide precompiled Yocto SDKs for i.MX93 EVK and FRDM-iMX93.
+- [i.MX 93 EVK Yocto SDK installer](https://repository.microej.com/packages/yocto/i.MX93EVK/2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh)
+- [FRDM i.MX 93 Yocto SDK installer](https://repository.microej.com/packages/yocto/i.MX93FRDM/20250731_1.0.0_fsl-imx-xwayland-glibc-x86_64-core-image-microej-armv8a-imx93frdm-toolchain-6.6-scarthgap.sh)
+
+Here is the procedure for i.MX93 EVK, using WSL or Linux:
+
+```
+$ curl -O https://repository.microej.com/packages/yocto/i.MX93EVK/2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
+$ chmod +x 2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
+$ ./2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
+MicroEJ: 32-bit userspace + 64-bit kernel SDK installer version nodistro.0
+==========================================================================
+Enter target directory for SDK (default: /usr/local/oecore-x86_64):
+You are about to install the SDK to "/usr/local/oecore-x86_64". Proceed [Y/n]? y
+Extracting SDK......................................................................done
+Setting it up...done
+SDK has been successfully set up and is ready to be used.
+Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
+ $ . /usr/local/oecore-x86_64/environment-setup-armv7at2hf-neon-vfpv4-oemllib32-linux-gnueabi
+ $ . /usr/local/oecore-x86_64/environment-setup-cortexa55-oe-linux
+```
+
+The default toolchain installation path is preconfigured in [set_project_env.sh](vee-port/bsp/set_project_env.sh):
+
+```
+YOCTO_SDK_INSTALL=/usr/local/oecore-x86_64
+YOCTO_SDK_ENV_SCRIPT=environment-setup-armv7at2hf-neon-vfpv4-oemllib32-linux-gnueabi
+```
+For i.MX93 FRDM, if you may have to update the configuration with:
+```
+YOCTO_SDK_INSTALL=/opt/fsl-imx-fb/6.1-mickledore
+YOCTO_SDK_ENV_SCRIPT=environment-setup-armv7at2hf-neon-pokymllib32-linux-gnueabi
+```
+
+### Flash Yocto image on the SD Card
+
+We provide precompiled Yocto Images for i.MX93 EVK and FRDM-iMX93. Click on the links below to download the images.
+- [i.MX 93 EVK Yocto Image](https://repository.microej.com/packages/yocto/i.MX93EVK/2024-05-24-IMX93-lib32-core-image-microej-microej-imx93-1.0.2.wic.gz)
+- [FRDM i.MX 93 Yocto Image](https://repository.microej.com/packages/yocto/i.MX93FRDM/20250731_1.0.0_core-image-microej-imx93frdm.rootfs.wic.zst)
+
+The Linux image is flashed on an SD card.
+
+To flash the image follow the steps corresponding to your OS:
+
+#### Linux
+
+To flash the image on Linux, please refer to the [i.MX Linux User Guide](https://www.nxp.com/docs/en/user-guide/IMX_LINUX_USERS_GUIDE.pdf)
+
+First you must unzip the file with `gzip` or `ztd` depending on the extension, then flash the whole SD card with it.
+
+As an example, if you are flashing the FRDM image on the SD card:
+
+```
+zstd -dfk /mnt/c/tmp/imx-image-core-imx93evk.wic.zst
+dd if=imx-image-core-imx93evk.wic of=<insert SDcard device here>
+```
+
+#### Windows
+
+To flash the image on Windows, do the following:
+
+* Install Rufus: https://rufus.ie/en/.
+* Select your SD card device in the list at the top (see example of configuration below).
+* Select your `.wic.zst` or `.wic.gz` file by clicking on `SELECT`
+* Finally click on `START` at the bottom and wait for the process to finish.
+
+![Rufus](./images/config-rufus.png)
+
+### Build and Run the Application
+
+- Run the `app` sample Application [on Device](https://docs.microej.com/en/latest/SDK6UserGuide/runOnDevice.html).
+  This automatically builds the VEE Port i.MX93 and uses it.
+
+The build may take several minutes.  
+The first time, the VEE Port i.MX93 build requires to download modules that are available on the MicroEJ Central Repository.  
+The VEE Port i.MX93 will also build the `linux-abstraction-layer` project and link it with MicroEJ VEE and the Application to produce an executable.
+
 Wait for the Application start, or for the final message:
 
 ```sh
 BUILD SUCCESSFUL
 ```
 
-An evaluation license is needed for building an Application. Refer to
-https://docs.microej.com/en/latest/SDK6UserGuide/licenses.html#evaluation-licenses
-for information on how to acquire and activate a license.
+## Test Suite Configuration
 
-## Run an Application on the Device
+Test suites configuration projects are located here: `vee-port/validation`.
 
-To build and run the Application on the Device, the BSP and C/C++ Toolchain are required.
+To run the test suites please refer to
+https://docs.microej.com/en/latest/Tutorials/tutorialRunATestSuiteOnDevice.html
 
-### i.MX Yocto Setup
+## Advanced Tips
+
+### Build your own Yocto Image and SDK
+
+#### i.MX Yocto Setup
 
 Please refer to the [i.MX Yocto Project User's Guide](https://www.nxp.com/doc/IMX_YOCTO_PROJECT_USERS_GUIDE)
 for instructions on how to build a Yocto image for i.MX targets.
 
 The following is a simplified procedure to build a firmware and a Yocto SDK for i.MX93EVK board.
 
-#### Build Yocto Image
-
+#### Build Yocto Image and SDK
 
 This VEE Port has been tested with the following release of i.MX Yocto.
 
@@ -190,34 +320,6 @@ bitbake imx-image-core
 
 The resulting image is `build/tmp/deploy/images/imx93evk/imx-image-core-imx93evk.wic.zst`
 
-#### Flash Yocto Image
-
-The Linux image is flashed on an SD card.
-
-To flash the image follow the steps corresponding to your OS:
-
-##### Linux
-
-To flash the image on Linux, please refer to the [i.MX Linux User Guide](https://www.nxp.com/docs/en/user-guide/IMX_LINUX_USERS_GUIDE.pdf)
-
-As an example, if you are flashing the image on the SD card:
-
-```
-zstd -dfk /mnt/c/tmp/imx-image-core-imx93evk.wic.zst
-dd if=imx-image-core-imx93evk.wic of=<insert SDcard device here>
-```
-
-##### Windows
-
-To flash the image on Windows, do the following:
-
-* Install Rufus: https://rufus.ie/en/.
-* Extract the `.wic` file from the archive `imx-image-core-imx93evk.wic.zst`.
-* Select your SD card device in the list at the top (see example of configuration below).
-* Select your `.wic` file by clicking on `SELECT`
-* Finally click on `START` at the bottom and wait for the process to finish.
-
-![Rufus](./images/config-rufus.png)
 
 #### Build and Install Yocto SDK
 
@@ -227,67 +329,37 @@ In the same workspace, generate the Yocto SDK, which will be used by MicroEJ SDK
 bitbake imx-image-core -c populate_sdk
 ```
 
-To install the Yocto SDK, use the following commands in WSL or Linux:
+The resulting SDK is `build/tmp/deploy/sdk/fsl-imx-fb-glibc-x86_64-imx-image-core-armv8a-imx93evk-toolchain-6.1-mickledore.sh`
 
-```
-$ sh fsl-imx-fb-glibc-x86_64-imx-image-core-armv8a-imx93evk-toolchain-6.1-mickledore.sh
-NXP i.MX Release Distro SDK installer version 6.1-mickledore
-============================================================
-Enter target directory for SDK (default: /opt/fsl-imx-fb/6.1-mickledore):
-You are about to install the SDK to "/opt/fsl-imx-fb/6.1-mickledore". Proceed [Y/n]? y
-[sudo] password for ___:
-Extracting SDK...done
-Setting it up...done
-SDK has been successfully set up and is ready to be used.
-Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
-$ . /opt/fsl-imx-fb/6.1-mickledore/environment-setup-armv7at2hf-neon-pokymllib32-linux-gnueabi
-$ . /opt/fsl-imx-fb/6.1-mickledore/environment-setup-armv8a-poky-linux
-```
+Once the SDK is extracted, you need to update its installation path in MicroEJ Abstraction layer.
 
-#### Configure Yocto SDK in MicroEJ Abstraction Layer
-
-For detailed information on how to setup MicroEJ Abstraction layer, please refer to [README Abstraction Layer Linux](https://gitlab.cross/M0124_BSP-Framework/M0124_CCO-VEE-Linux/-/blob/develop/README.md)
-
-In our case, we must edit [set_project_env.sh](vee-port/bsp/set_project_env.sh) for the 32bit toolchain:
+In our case, we must edit [set_project_env.sh](vee-port/bsp/set_project_env.sh) with the 32bit toolchain:
 
 ```
 YOCTO_SDK_INSTALL=/opt/fsl-imx-fb/6.1-mickledore
 YOCTO_SDK_ENV_SCRIPT=environment-setup-armv7at2hf-neon-pokymllib32-linux-gnueabi
 ```
 
-### Build and Run the Application
+### Build the Abstraction Layer Manually
 
-- Run the `app` sample Application [on Device](https://docs.microej.com/en/latest/SDK6UserGuide/runOnDevice.html).
-  This automatically builds the VEE Port i.MX93 and uses it.
+This section shows how to build the `linux-abstraction-layer` project manually without having to rebuild the application.
 
-The build may take several minutes.  
-The first time, the VEE Port i.MX93 build requires to download modules that are available on the MicroEJ Central Repository.  
-The VEE Port i.MX93 will also build the `bsp` project and link it with MicroEJ VEE and the Application to produce an executable.
+Note: this can only be done if `buildExecutable` or `runOnDevice` have been called at least once, see [Run on Device](https://docs.microej.com/en/latest/SDK6UserGuide/runOnDevice.html)
 
-Wait for the Application start, or for the final message:
-
-```sh
-BUILD SUCCESSFUL
-```
-
-### BSP Manual Compilation
-
-Before the first build, you will have to edit the file `Linux-abstractionlayer/vee/scripts/set_local_env.bat` with the proper info regarding your WSL instance.
-
-To build the `bsp` project, open a
+To build the `linux-abstraction-layer` project, open a
 terminal and enter the following command lines:
 
 **On Windows:**
 
 ```sh
-$ cd "bsp/vee/scripts"
+$ cd "linux-abstraction-layer/vee/scripts"
 $ build.bat
 ```
 
 **On Linux / macOS:**
 
 ```sh
-$ cd "bsp/vee/scripts"
+$ cd "linux-abstraction-layer/vee/scripts"
 $ build.sh
 ```
 
@@ -295,63 +367,23 @@ You can now run your program:
 
 **On Windows:**
 ```sh
-$ cd "bsp/vee/scripts"
+$ cd "linux-abstraction-layer/vee/scripts"
 $ run.bat
 ```
 
 **On Linux / macOS:**
 
 ```sh
-$ cd "bsp/vee/scripts"
+$ cd "linux-abstraction-layer/vee/scripts"
 $ run.sh
 ```
 
-## Board Setup
-
-### target SSH configuration
-
-MicroEJ applications are deployed on the target via SSH.
-
-Follow the [README Abstraction Layer Linux](https://gitlab.cross/M0124_BSP-Framework/M0124_CCO-VEE-Linux/-/blob/develop/README.md) on how to configure the target IP address.
-
-### Power Supply
-
-The board is powered via a USB-C connector.
-
-Please refer to NXP documentation available [here](https://www.nxp.com/webapp/Download?colCode=MCIMX93EVKUM)
-for more details.
-
-### Logs Output
-
-A serial port is available on the EVK (DBG USB port), it provides access to the shell.
-
-To connect to this port use the following settings:
-
-|              |          |
-|--------------|----------|
-| Baudrate     | 115200   |
-| Data bits    | 8        |
-| Parity bits  | None     |
-| Stop bits    | 1        |
-| Flow control | XON/XOFF |
-
-
-Please refer to the NXP documentation available [here](https://www.nxp.com/design/design-center/development-boards-and-designs/i-mx-evaluation-and-development-boards/i-mx-93-evaluation-kit:i.MX93EVK)
-for more details.
-
-## Test Suite Configuration
-
-Test suites configuration projects are located here: `vee-port/validation`.
-
-To run the test suites please refer to
-https://docs.microej.com/en/latest/Tutorials/tutorialRunATestSuiteOnDevice.html
-
 ## Troubleshooting
 
-### Running the Application Manually
+### Restart the Application Manually
 
 When we are running the application in Embedded mode, everything is done by a script called `run.sh`.
-See [README Abstraction Layer Linux](https://gitlab.cross/M0124_BSP-Framework/M0124_CCO-VEE-Linux/-/blob/develop/README.md) for more details.
+See [README Abstraction Layer Linux](https://github.com/MicroEJ/AbstractionLayer-Linux/blob/master/README.md) for more details.
 
 Basically this script will scp the executable onto the target and run it with some environment variables.
 
@@ -359,9 +391,30 @@ For debugging purposes, you can restart the application manually:
 
 ```
 root@imx93evk:~# killall application.out
-root@imx93evk:~# LLDISPLAY_USE_VSYNC=1 /tmp/application.out
+root@imx93evk:~# LLDISPLAY_USE_VSYNC=1 /bin/application.out
 ```
 Other variables are useful for debugging purposes (see section about the touchscreen below).
+
+### Display not Detected
+
+If the application prints this log, it means that the application has not been able to detect the display:
+```
+[LLDISPLAY][WARNING] Frame buffer not available, skipping display setup
+```
+You can confirm if the DRM display driver has detected the display with this command:
+```
+root@microej-imx93:~# modetest
+...
+trying to open device 'imx-drm'...failed
+...
+```
+If it prints `'imx-drm'...failed` then you may have to check your connectors or reboot the board.
+
+If it prints `'imx-drm' ...done` and then list of connectors, resolution and EDID, then the display has been detected.
+
+Remarks:
+- The MicroEJ application will select the first connected display device, and its first available resolution.
+- This release has been tested with MageDok [T080A portable HDMI touchscreen display](https://store.magedok.com/products/8-inch-1280-720-resolution-touch-monitor-t080a).
 
 ### USB HID Touch Screen is not Detected
 

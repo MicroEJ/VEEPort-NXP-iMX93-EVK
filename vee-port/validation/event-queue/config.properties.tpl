@@ -1,6 +1,6 @@
 # Properties
 #
-# Copyright 2021-2025 MicroEJ Corp. All rights reserved.
+# Copyright 2025 MicroEJ Corp. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be found with this software.
 
 ###############################################################################
@@ -69,9 +69,6 @@ microej.testsuite.verbose=true
 # The testsuite timeout (in seconds)
 microej.testsuite.timeout=600
 
-# The testsuite trace timeout (in seconds)
-microej.testsuite.properties.testsuite.trace.timeout=75
-
 # The number of times we'll retry a test if it fails
 microej.testsuite.retry.count=1
 
@@ -83,3 +80,6 @@ microej.testsuite.jvmArgs=-Xmx768m
 
 # A jvm args to pass to launch scripts forked vm
 microej.testsuite.properties.launch.properties.jvm=-Xmx2048M
+
+# The foundation jars used for the code coverage, useful only if the target.vm.name = S3
+microej.testsuite.cc.jars.name.regex=event-.*jar

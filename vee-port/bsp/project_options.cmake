@@ -1,4 +1,4 @@
-# Copyright 2024 MicroEJ Corp. All rights reserved.
+# Copyright 2024-2025 MicroEJ Corp. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be found with this software.
 
 #
@@ -10,17 +10,17 @@ set(CFLAGS ${CFLAGS} -mbe32)
 #
 # Abstraction layer external source
 #
-# set(ABSTRACTION_LAYER_EXTERNAL ../../../Linux-abstractionlayer-imx93)
+# set(ABSTRACTION_LAYER_EXTERNAL ../../../linux-abstraction-layer-imx93)
 # When specifying an out-of-tree source a binary directory must be explicitly specified
 # here we will install the output files in a subdirectory of CMAKE_CURRENT_BINARY_DIR
-# add_subdirectory(${ABSTRACTION_LAYER_EXTERNAL} Linux-abstractionlayer-imx93)
+# add_subdirectory(${ABSTRACTION_LAYER_EXTERNAL} linux-abstraction-layer-imx93)
 
 #
 # Abstraction layer options
 #
 # This section allows you to override the default CMake options that are defined in Linux Abstraction layer.
 
-# For example to disable the following option defined in Linux-abstractionlayer/projects/microej/options.cmake
+# For example to disable the following option defined in linux-abstraction-layer/vee/options.cmake
 # option(BUILD_FS           "Build File System Abstraction Layer"            ON)
 # You can just override its default value here, for example:
 # set(BUILD_FS OFF)

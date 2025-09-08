@@ -1,4 +1,4 @@
-[submodule "Linux-abstractionlayer"]
-	path = Linux-abstractionlayer
+[submodule "linux-abstraction-layer"]
+	path = linux-abstraction-layer
 	url = https://github.com/MicroEJ/AbstractionLayer-Linux.git
 	branch = master

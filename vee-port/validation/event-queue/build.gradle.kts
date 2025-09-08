@@ -4,6 +4,7 @@
  * Copyright 2025 MicroEJ Corp. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be found with this software.
  */
+
 import com.microej.gradle.plugins.TestMode
 import com.microej.gradle.plugins.TestTarget
 
@@ -13,7 +14,7 @@ plugins {
 
 microej {
     architectureUsage = System.getProperty("com.microej.architecture.usage") ?: "eval" // or "prod"
-    skippedCheckers = "readme,license"
+    skippedCheckers = "readme,license,changelog"
 }
 
 dependencies {
@@ -40,8 +41,8 @@ testing {
                 implementation(libs.junit)
                 implementation(libs.junit.platform)
 
-                implementation(libs.api.edc)
-                implementation(libs.api.bon)
+                implementation(libs.testsuite.event)
+                implementation(libs.api.event)
             }
 
             targets {

@@ -1,7 +1,7 @@
 /*
  * Kotlin
  *
- * Copyright 2024 MicroEJ Corp. All rights reserved.
+ * Copyright 2024-2025 MicroEJ Corp. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be found with this software.
  */
 
@@ -13,6 +13,7 @@ project(":vee-port:front-panel").projectDir = file("vee-port/extensions/front-pa
 //project(":vee-port:image-generator").projectDir = file("vee-port/extensions/image-generator")
 
 include("vee-port:validation:core")
+include("vee-port:validation:event-queue")
 include("vee-port:validation:fs")
 include("vee-port:validation:net")
 include("vee-port:validation:security")
@@ -22,7 +23,7 @@ include("vee-port:validation:ui")
 dependencyResolutionManagement {
     versionCatalogs {
         create("libsOverride") {
-            from(files("./Linux-abstractionlayer/gradle/libs.versions.toml"))
+            from(files("./linux-abstraction-layer/gradle/libs.versions.toml"))
         }
     }
 }

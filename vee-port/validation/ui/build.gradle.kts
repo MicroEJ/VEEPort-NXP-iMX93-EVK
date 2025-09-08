@@ -1,7 +1,7 @@
 /*
  * Kotlin
  *
- * Copyright 2025 MicroEJ Corp. All rights reserved.
+ * Copyright 2024-2025 MicroEJ Corp. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be found with this software.
  */
 
@@ -44,12 +44,13 @@ testing {
                         filter {
                             excludeTestsMatching("*AllTestClasses")
                             excludeTestsMatching("*SingleTest*")
+                            // do not embed inner classes as test classes
                             excludeTestsMatching("*$*")
 
                             // Not available on Linux
                             excludeTestsMatching("*Screenshot*")
                             // No GPU available
-                            excludeTestsMatching("*GPU*")
+                            excludeTestsMatching("com.microej.microui.test.gpu*")
                             // Not supported with SDK6 yet
                             excludeTestsMatching("com.microej.microui.bench*")
                         }
