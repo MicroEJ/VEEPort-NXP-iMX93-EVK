@@ -1,5 +1,7 @@
-# Copyright 2024-2025 MicroEJ Corp. All rights reserved.
+# Copyright 2024-2026 MicroEJ Corp. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be found with this software.
+#
+# Build: 7E4D1F7C
 
 #
 # CFLAGS
@@ -34,9 +36,42 @@ set(BUILD_UI_FRAMERATE OFF)
 # use libdrm by default
 set(BUILD_UI_FBDRM ON)
 set(BUILD_UI_FBDEV OFF)
+# no serial port yet
+set(BUILD_SERIAL OFF)
+# no audio support
+set(BUILD_AUDIO OFF)
 
 # Debug features
 set(ADVANCED_TRACE OFF)
+set(USE_VEEPORT_LOGGER ON)
+
+# Options generated from the Gradle build. -Pexperimental.rio.enabled=true turns
+# BUILD_RIO on. See README.md, "Experimental Features".
+include(${CMAKE_CURRENT_LIST_DIR}/gradle_options.cmake OPTIONAL)
 
 # Test features
 set(BUILD_VALIDATION OFF)
+set(BUILD_VALIDATION_KERNEL OFF)
+set(BUILD_VALIDATION_VEE_MOCK OFF)
+
+#
+# Crypto: PKCS#11 external keystore runtime configuration
+#
+# Baked at build time so the application runs with no runtime environment
+# (no OPENSSL_CONF / OPENSSL_MODULES / LLCRYPTO_PKCS11_* needed). Paths are the
+# iMX93 OP-TEE target paths.
+set(LLCRYPTO_PKCS11_MODULE "/usr/lib/libckteec.so.0")
+set(LLCRYPTO_OSSL_MODULES_DIR "/usr/lib/ossl-modules")
+
+#
+# Crypto: PKCS#12 external keystore file path
+#
+# Baked at build time so the application runs with no runtime environment.
+# Mirrors the deploy target (KEYSTORE_TARGET in set_project_env.sh) so the binary
+# reads exactly where deploy_keystore.sh scp's the .p12 on the iMX93 target. Only
+# consumed by the PKCS12 backend (ignored when LLCRYPTO_KEYSTORE_TYPE=PKCS11). When
+# KEYSTORE_TARGET is not exported (e.g. a bare cmake configure), the C #ifndef
+# fallback applies.
+if(NOT "$ENV{KEYSTORE_TARGET}" STREQUAL "")
+    set(LLCRYPTO_KEYSTORE_PATH "$ENV{KEYSTORE_TARGET}")
+endif()

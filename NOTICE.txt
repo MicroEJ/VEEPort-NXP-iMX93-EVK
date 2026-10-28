@@ -1,0 +1,27 @@
+The software contained in this package is licensed under the terms and conditions described in the `LICENSE.txt` file,
+except for the following files that are licensed under their own terms:
+
+----------------------------------------------------------------------
+   MicroUI
+----------------------------------------------------------------------
+
+Location: linux-abstraction-layer/vee/middleware/microui
+License: MICROEJ COMMERCIAL SOFTWARE COMPONENT LICENSE AGREEMENT
+
+Copyright 2020-2026 MicroEJ Corp. All rights reserved.
+MicroEJ Corp. PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+
+The full license text is available at:
+linux-abstraction-layer/vee/middleware/microui/LICENSE.txt
+
+----------------------------------------------------------------------
+   Embunit
+----------------------------------------------------------------------
+
+Location: linux-abstraction-layer/vee/port/validation/framework/c/embunit
+License: MIT
+
+Copyright (c) 2003 Embedded Unit Project
+
+The full license text is available at:
+linux-abstraction-layer/vee/port/validation/framework/c/embunit/LICENSE

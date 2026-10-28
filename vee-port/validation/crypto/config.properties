@@ -2,6 +2,8 @@
 #
 # Copyright 2021-2025 MicroEJ Corp. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be found with this software.
+#
+# Build: 7E4D1F7C
 
 ###############################################################################
 # 						Testsuite Configuration Options
@@ -82,4 +84,4 @@ microej.testsuite.jvmArgs=-Xmx768m
 microej.testsuite.properties.launch.properties.jvm=-Xmx2048M
 
 # The foundation jars used for the code coverage, useful only if the target.vm.name = S3
-microej.testsuite.cc.jars.name.regex=security-.*jar
+microej.testsuite.cc.jars.name.regex=crypto-.*jar

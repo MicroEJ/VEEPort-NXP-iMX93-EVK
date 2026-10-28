@@ -1,7 +1,7 @@
 /*
  * Kotlin
  *
- * Copyright 2025 MicroEJ Corp. All rights reserved.
+ * Copyright 2025-2026 MicroEJ Corp. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be found with this software.
  */
 
@@ -17,4 +17,16 @@ dependencies {
     implementation(libs.frontpanel.framework)
     // Remove this dependency if you remove the UI pack
     implementation(libs.frontpanel.ui.widget)
+}
+
+artifacts {
+    add("additionalElements", file("../../../README.md")) {
+        classifier = "readme"
+    }
+    add("additionalElements", file("../../../CHANGELOG.md")) {
+        classifier = "changelog"
+    }
+    add("additionalElements", file("../../../LICENSE.txt")) {
+        classifier = "license"
+    }
 }

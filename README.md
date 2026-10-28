@@ -1,5 +1,5 @@
 ![SDK](https://shields.microej.com/endpoint?url=https://repository.microej.com/packages/badges/sdk_6.0.json)
-![SDK](https://shields.microej.com/endpoint?url=https://repository.microej.com/packages/badges/arch_8.4.json)
+![ARCH](https://shields.microej.com/endpoint?url=https://repository.microej.com/packages/badges/arch_8.6.json)
 ![SDK](https://shields.microej.com/endpoint?url=https://repository.microej.com/packages/badges/gui_3.json)
 
 # VEE Port for NXP i.MX93
@@ -63,25 +63,25 @@ Common Documentation:
 
 ## VEE Port Specifications
 
-The Architecture version is `8.4.0`.
+The Architecture version is `8.6.0`.
 
 This VEE Port provides the following Foundation Libraries:
 
 | Foundation Library | Version |
 |--------------------|---------|
-| BON                | 1.4     |
-| DEVICE             | 1.2     |
+| BON                | 1.5     |
+| CRYPTO             | 2.3     |
+| DEVICE             | 1.4     |
 | DRAWING            | 1.0     |
 | ECOM-NETWORK       | 2.1     |
-| EVENT              | 2.1     |
+| EVENT              | 3.0     |
 | FS                 | 2.1     |
 | KF                 | 1.7     |
-| MICROUI            | 3.5     |
+| MICROUI            | 3.6     |
 | NET                | 1.1     |
 | RESOURCEMANAGER    | 1.0     |
-| SECURITY           | 1.7     |
 | SNI                | 1.4     |
-| SSL                | 2.2     |
+| SSL                | 2.3     |
 | TRACE              | 1.1     |
 | WATCHDOG           | 1.0     |
 
@@ -89,6 +89,27 @@ The VEE Port is derived into:
 
 - a Mono-Sandbox VEE Port (default)
 - a Multi-Sandbox VEE Port
+
+## Experimental Features
+
+### RIO
+
+RIO is an event-driven I/O library. It is not public yet, so this VEE Port does not
+build it.
+
+To enable RIO, give the `experimental.rio.enabled` property to Gradle. The property
+adds the RIO pack and sets the `BUILD_RIO` CMake option, so the abstraction layer and
+the library always agree.
+
+```bash
+./gradlew :app:buildExecutable -Pexperimental.rio.enabled=true
+```
+
+To run the RIO test suite, give the same property:
+
+```bash
+./gradlew :vee-port:validation:rio:test -Pexperimental.rio.enabled=true
+```
 
 ## Requirements
 
@@ -175,44 +196,32 @@ To setup WSL, and the SSH connection, follow the [Host Configuration README](htt
 ### Toolchain Setup
 
 We provide precompiled Yocto SDKs for i.MX93 EVK and FRDM-iMX93.
-- [i.MX 93 EVK Yocto SDK installer](https://repository.microej.com/packages/yocto/i.MX93EVK/2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh)
-- [FRDM i.MX 93 Yocto SDK installer](https://repository.microej.com/packages/yocto/i.MX93FRDM/20250731_1.0.0_fsl-imx-xwayland-glibc-x86_64-core-image-microej-armv8a-imx93frdm-toolchain-6.6-scarthgap.sh)
+- [i.MX 93 EVK Yocto SDK installer](https://repository.microej.com/packages/yocto/i.MX93EVK/20260603_1.1.0_multilib-fsl-imx-xwayland-glibc-x86_64-core-image-microej-armv8a-imx93evk-toolchain-6.6-scarthgap-1.1.0.sh)
+- [FRDM i.MX 93 Yocto SDK installer](https://repository.microej.com/packages/yocto/i.MX93FRDM/20260603_1.1.0_multilib-fsl-imx-xwayland-glibc-x86_64-core-image-microej-armv8a-imx93frdm-toolchain-6.6-scarthgap-1.1.0.sh)
 
 Here is the procedure for i.MX93 EVK, using WSL or Linux:
 
 ```
-$ curl -O https://repository.microej.com/packages/yocto/i.MX93EVK/2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
-$ chmod +x 2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
-$ ./2024-04-30-IMX93-oecore-x86_64-armv7at2hf-neon-vfpv4-toolchain-nodistro-1.0.0.sh
-MicroEJ: 32-bit userspace + 64-bit kernel SDK installer version nodistro.0
-==========================================================================
-Enter target directory for SDK (default: /usr/local/oecore-x86_64):
-You are about to install the SDK to "/usr/local/oecore-x86_64". Proceed [Y/n]? y
-Extracting SDK......................................................................done
-Setting it up...done
-SDK has been successfully set up and is ready to be used.
-Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
- $ . /usr/local/oecore-x86_64/environment-setup-armv7at2hf-neon-vfpv4-oemllib32-linux-gnueabi
- $ . /usr/local/oecore-x86_64/environment-setup-cortexa55-oe-linux
+$ curl -O https://repository.microej.com/packages/yocto/i.MX93EVK/20260603_1.1.0_multilib-fsl-imx-xwayland-glibc-x86_64-core-image-microej-armv8a-imx93evk-toolchain-6.6-scarthgap-1.1.0.sh
+$ chmod +x 20260603_1.1.0_multilib-fsl-imx-xwayland-glibc-x86_64-core-image-microej-armv8a-imx93evk-toolchain-6.6-scarthgap-1.1.0.sh
+$ ./20260603_1.1.0_multilib-fsl-imx-xwayland-glibc-x86_64-core-image-microej-armv8a-imx93evk-toolchain-6.6-scarthgap-1.1.0.sh
 ```
 
-The default toolchain installation path is preconfigured in [set_project_env.sh](vee-port/bsp/set_project_env.sh):
+Keep the default target directory, `/opt/multilib-fsl-imx-xwayland/6.6-scarthgap-1.1.0`.
+The installation path is preconfigured in [set_project_env.sh](vee-port/bsp/set_project_env.sh):
 
 ```
-YOCTO_SDK_INSTALL=/usr/local/oecore-x86_64
-YOCTO_SDK_ENV_SCRIPT=environment-setup-armv7at2hf-neon-vfpv4-oemllib32-linux-gnueabi
-```
-For i.MX93 FRDM, if you may have to update the configuration with:
-```
-YOCTO_SDK_INSTALL=/opt/fsl-imx-fb/6.1-mickledore
+YOCTO_SDK_INSTALL=/opt/multilib-fsl-imx-xwayland/6.6-scarthgap-1.1.0
 YOCTO_SDK_ENV_SCRIPT=environment-setup-armv7at2hf-neon-pokymllib32-linux-gnueabi
 ```
+
+The FRDM i.MX 93 SDK installer uses the same default target directory.
 
 ### Flash Yocto image on the SD Card
 
 We provide precompiled Yocto Images for i.MX93 EVK and FRDM-iMX93. Click on the links below to download the images.
-- [i.MX 93 EVK Yocto Image](https://repository.microej.com/packages/yocto/i.MX93EVK/2024-05-24-IMX93-lib32-core-image-microej-microej-imx93-1.0.2.wic.gz)
-- [FRDM i.MX 93 Yocto Image](https://repository.microej.com/packages/yocto/i.MX93FRDM/20250731_1.0.0_core-image-microej-imx93frdm.rootfs.wic.zst)
+- [i.MX 93 EVK Yocto Image](https://repository.microej.com/packages/yocto/i.MX93EVK/20260603_1.1.0_core-image-microej-imx93evk.rootfs.wic.zst)
+- [FRDM i.MX 93 Yocto Image](https://repository.microej.com/packages/yocto/i.MX93FRDM/20260603_1.1.0_core-image-microej-imx93frdm.rootfs.wic.zst)
 
 The Linux image is flashed on an SD card.
 
@@ -224,11 +233,11 @@ To flash the image on Linux, please refer to the [i.MX Linux User Guide](https:/
 
 First you must unzip the file with `gzip` or `ztd` depending on the extension, then flash the whole SD card with it.
 
-As an example, if you are flashing the FRDM image on the SD card:
+As an example, if you are flashing the i.MX 93 EVK image on the SD card:
 
 ```
-zstd -dfk /mnt/c/tmp/imx-image-core-imx93evk.wic.zst
-dd if=imx-image-core-imx93evk.wic of=<insert SDcard device here>
+zstd -dfk 20260603_1.1.0_core-image-microej-imx93evk.rootfs.wic.zst
+dd if=20260603_1.1.0_core-image-microej-imx93evk.rootfs.wic of=<insert SDcard device here>
 ```
 
 #### Windows
@@ -264,6 +273,47 @@ Test suites configuration projects are located here: `vee-port/validation`.
 To run the test suites please refer to
 https://docs.microej.com/en/latest/Tutorials/tutorialRunATestSuiteOnDevice.html
 
+## Crypto Validation Test Suite
+
+The `crypto` validation suite exercises the `ExternalKeyStore` backend on the
+target board. The backend is selected by `LLCRYPTO_KEYSTORE_TYPE` in
+[vee-port/bsp/set_project_env.sh](vee-port/bsp/set_project_env.sh):
+
+- `PKCS11` (default) — PKCS#11 token via OpenSSL `pkcs11-provider`, targeting the
+  OP-TEE PKCS#11 TA running in ARM TrustZone (keys protected by the NXP EdgeLock
+  Secure Enclave).
+- `PKCS12` — traditional `.p12` file backend.
+
+Only one backend is compiled at a time (mutually exclusive at build time).
+
+### Yocto Image Prerequisites (PKCS11 backend)
+
+The target Yocto image must include the following packages:
+
+- `optee-client` (provides `libckteec.so.0`, the PKCS#11 client library)
+- `optee-os` with the PKCS#11 Trusted Application enabled
+- `pkcs11-provider` (OpenSSL 3.x provider)
+- `opensc` (provides `pkcs11-tool`, used by the on-board provisioning script)
+
+The MicroEJ-prebuilt Yocto image linked in [Flash Yocto image on the SD Card](#flash-yocto-image-on-the-sd-card)
+already ships these. If you build your own image, add them to your `local.conf`.
+
+### Run the Suite
+
+Token provisioning is handled automatically: the crypto validation Gradle
+build deploys the test keystore and runs `setup-optee-test-token.sh` on the
+board before the test starts. The shipped `test-keystore.p12` only carries test
+fixtures — note that the AES `test-secret` is generated on-token at provisioning
+time, because `openssl pkcs12` cannot extract `secretBag` entries.
+
+```bash
+# Full crypto suite
+./gradlew :vee-port:validation:crypto:test
+
+# ExternalKeyStore tests only
+./gradlew :vee-port:validation:crypto:test --tests "com.microej.crypto.test._AllTests_ExternalKeyStoreTest"
+```
+
 ## Advanced Tips
 
 ### Build your own Yocto Image and SDK
@@ -282,17 +332,17 @@ This VEE Port has been tested with the following release of i.MX Yocto.
 First, fetch the source code:
 
 ```
-repo init -u https://github.com/nxp-imx/imx-manifest -b imx-linux-mickledore -m imx-6.1.55-2.2.0.xml
+repo init -u https://github.com/nxp-imx/imx-manifest -b imx-linux-scarthgap -m imx-6.6.52-2.2.2.xml
 repo sync
 ```
 
 Then, setup the build for i.MX93EVK:
 
 ```
-MACHINE=imx93evk DISTRO=fsl-imx-fb source imx-setup-release.sh -b build
+MACHINE=imx93evk DISTRO=fsl-imx-xwayland source imx-setup-release.sh -b build
 ```
 
-Then, add the necessary 32bit librairies:
+Then, add the 32-bit libraries and the packages that the VEE Port needs:
 
 ```
 echo -e "\n#Enable multilib support"                                           >> ./conf/local.conf
@@ -305,11 +355,14 @@ echo -e "#Multilib does not support debian packaging"                          >
 sed 's/PACKAGE_CLASSES/#PACKAGE_CLASSES/g' -i ./conf/local.conf
 sed 's/EXTRA_IMAGE_FEATURES/#EXTRA_IMAGE_FEATURES/g' -i ./conf/local.conf
 
-echo -e "# Librairies dependencies"                                            >> ./conf/local.conf
-echo -e "IMAGE_INSTALL:append = \" lib32-libssl lib32-libdrm lib32-tslib\""    >> ./conf/local.conf 
+echo -e "# Libraries dependencies"                                             >> ./conf/local.conf
+echo -e "IMAGE_INSTALL:append = \" lib32-libssl lib32-libdrm lib32-tslib\""    >> ./conf/local.conf
+
+echo -e "# External KeyStore (PKCS#11 backend)"                                >> ./conf/local.conf
+echo -e "IMAGE_INSTALL:append = \" optee-os lib32-optee-client lib32-pkcs11-provider opensc\"" >> ./conf/local.conf
 
 echo -e "# Tools"                                                              >> ./conf/local.conf
-echo -e "IMAGE_INSTALL:append = \" tslib-calibrate\""                          >> ./conf/local.conf 
+echo -e "IMAGE_INSTALL:append = \" dropbear tslib-calibrate\""                 >> ./conf/local.conf
 ```
 
 Then build the target `imx-image-core`:
@@ -318,8 +371,7 @@ Then build the target `imx-image-core`:
 bitbake imx-image-core
 ```
 
-The resulting image is `build/tmp/deploy/images/imx93evk/imx-image-core-imx93evk.wic.zst`
-
+The resulting image is `build/tmp/deploy/images/imx93evk/imx-image-core-imx93evk.rootfs.wic.zst`.
 
 #### Build and Install Yocto SDK
 
@@ -329,14 +381,14 @@ In the same workspace, generate the Yocto SDK, which will be used by MicroEJ SDK
 bitbake imx-image-core -c populate_sdk
 ```
 
-The resulting SDK is `build/tmp/deploy/sdk/fsl-imx-fb-glibc-x86_64-imx-image-core-armv8a-imx93evk-toolchain-6.1-mickledore.sh`
+The resulting SDK is `build/tmp/deploy/sdk/fsl-imx-xwayland-glibc-x86_64-imx-image-core-armv8a-imx93evk-toolchain-6.6-scarthgap.sh`.
 
 Once the SDK is extracted, you need to update its installation path in MicroEJ Abstraction layer.
 
 In our case, we must edit [set_project_env.sh](vee-port/bsp/set_project_env.sh) with the 32bit toolchain:
 
 ```
-YOCTO_SDK_INSTALL=/opt/fsl-imx-fb/6.1-mickledore
+YOCTO_SDK_INSTALL=/opt/fsl-imx-xwayland/6.6-scarthgap
 YOCTO_SDK_ENV_SCRIPT=environment-setup-armv7at2hf-neon-pokymllib32-linux-gnueabi
 ```
 
@@ -385,15 +437,15 @@ $ run.sh
 When we are running the application in Embedded mode, everything is done by a script called `run.sh`.
 See [README Abstraction Layer Linux](https://github.com/MicroEJ/AbstractionLayer-Linux/blob/master/README.md) for more details.
 
-Basically this script will scp the executable onto the target and run it with some environment variables.
+Basically this script will scp the executable onto the target and run it. The application runs with no runtime environment variables.
 
 For debugging purposes, you can restart the application manually:
 
 ```
 root@imx93evk:~# killall application.out
-root@imx93evk:~# LLDISPLAY_USE_VSYNC=1 /bin/application.out
+root@imx93evk:~# /bin/application.out
 ```
-Other variables are useful for debugging purposes (see section about the touchscreen below).
+Some variables are useful for debugging purposes (see section about the touchscreen below).
 
 ### Display not Detected
 
@@ -493,7 +545,33 @@ Center : X = 2037 Y = 2034
 Calibration constants: 460044 20350 -34 1111024 75 11252 65536
 ```
 
+### Random MAC Address
+
+If the MAC addresses assigned to the ethernet interfaces are random after each boot, you should see this error log:
+```
+Warning: ethernet@42890000 (eth0) using random MAC address - 6e:23:cd:c6:32:09
+Warning: ethernet@428a0000 (eth1) using random MAC address - fe:ea:17:b8:8f:88
+```
+
+- Check the uboot environment settings for the variables `ethaddr` and `eth1addr`. Set them if they are not set:
+```
+setenv ethaddr xx:xx:xx:xx:xx:xx
+saveenv
+boot
+```
+
+- If they are set but you see this errors in the logs
+```
+Loading Environment from MMC... *** Warning - bad CRC, using default environment
+```
+Try to save the uboot environment to fix the problem:
+```
+saveenv
+boot
+```
+
 ---
 _Markdown_  
-_Copyright 2024-2025 MicroEJ Corp. All rights reserved._  
+_Copyright 2024-2026 MicroEJ Corp. All rights reserved._  
 _Use of this source code is governed by a BSD-style license that can be found with this software._  
+_Build: 7E4D1F7C_  
